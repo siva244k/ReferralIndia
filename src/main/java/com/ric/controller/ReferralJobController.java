@@ -33,7 +33,7 @@ public class ReferralJobController {
 				"java,j2ee,spring,webservices", "Bangalore", 3, 5, new Date(), new Date());
 		
 		PostResponse response = new PostResponse();
-		
+		try {
 		boolean success = service.create(rj);
 		
 		if(success) {
@@ -42,6 +42,11 @@ public class ReferralJobController {
 		} else {
 			response.setStatus("FAILURE");
 			response.setStatusMessage("Job not posted successfully");
+		}
+		} catch(Exception e) {
+			response.setStatus("FAILURE");
+			response.setStatusMessage("Job not posted successfully");
+			System.out.println("error cause : " + e.getCause()  + ", error message : " + e.getMessage());
 		}
 		
 		return response;
