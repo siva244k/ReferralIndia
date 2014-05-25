@@ -14,6 +14,16 @@ git branch -a
 
 git checkout <branch name>
 
+git status
+
+git add --all
+
+git add <file path>
+
+git commint -m "cooments"
+
+git push.
+
 
 Steps to setup local:
 ---------------------------
