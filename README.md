@@ -24,6 +24,14 @@ git commint -m "cooments"
 
 git push.
 
+git checkout --- to master
+
+git merge <branch>
+
+git commit
+
+git push.
+
 
 Steps to setup local:
 ---------------------------
