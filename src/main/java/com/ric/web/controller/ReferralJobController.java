@@ -1,15 +1,15 @@
-package com.ric.controller;
-
-import java.util.Date;
+package com.ric.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.ric.json.PostResponse;
 import com.ric.persistence.model.ReferralJob;
 import com.ric.persistence.service.IReferralJobService;
+import com.ric.web.json.PostResponse;
+import com.ric.web.model.PostRequest;
 
 @RestController
 public class ReferralJobController {
@@ -25,14 +25,16 @@ public class ReferralJobController {
 		return service;
 	}
 
-	@RequestMapping(value = "/post",method = RequestMethod.GET)
-	public PostResponse post() {
-        
+	@RequestMapping(value = "post", method = RequestMethod.POST)
+	public PostResponse post(final PostRequest request) {
 		
-		ReferralJob rj = new ReferralJob("nag", "Software Engineer",
-				"java,j2ee,spring,webservices", "Bangalore", 3, 5, new Date(), new Date());
+		System.out.println("request payload:" + request);
 		
 		PostResponse response = new PostResponse();
+		ReferralJob rj = new ReferralJob();
+		rj.setSkill(request.getSkill());
+		rj.setPosition(request.getPosition());
+		rj.setExpTo(request.getExpTo());
 		try {
 		  service.create(rj);
 		  response.setStatus("SUCCESS");
@@ -42,6 +44,13 @@ public class ReferralJobController {
 		} 
 		
 		return response;
+	}
+	
+	@RequestMapping("home")
+	public ModelAndView getHomePage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("home");
+		return mv;
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.ric.json;
+package com.ric.web.json;
 
 public class PostResponse {
 	
