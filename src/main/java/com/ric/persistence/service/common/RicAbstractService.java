@@ -23,8 +23,8 @@ public abstract class RicAbstractService<T extends Serializable> implements IOpe
     }
 
     @Override
-    public boolean create(final T entity) {
-        return getDao().create(entity);
+    public void create(final T entity) {
+        getDao().create(entity);
     }
 
     @Override

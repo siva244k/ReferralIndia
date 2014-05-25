@@ -2,9 +2,9 @@ package com.ric.json;
 
 public class PostResponse {
 	
-	private String status;
+	private String status = "FAILURE";
 	
-	private String statusMessage;
+	private String statusMessage = "Job not posted successfully";
 
 	public String getStatus() {
 		return status;

@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 
 @SuppressWarnings("unchecked")
 public abstract class RicAbstractDAO<T extends Serializable> implements
@@ -26,16 +25,8 @@ public abstract class RicAbstractDAO<T extends Serializable> implements
 	}
 
 	@Override
-	public final boolean create(final T entity) {
-		boolean saved = false;
-		try {
+	public final void create(final T entity) {
 			getCurrentSession().saveOrUpdate(entity);
-			saved = true;
-		} catch (DataAccessException dae) {
-			// change this to log4j
-			System.out.println("error while saving" + entity);
-		}
-		return saved;
 	}
 
 	@Override

@@ -34,20 +34,12 @@ public class ReferralJobController {
 		
 		PostResponse response = new PostResponse();
 		try {
-		boolean success = service.create(rj);
-		
-		if(success) {
-			response.setStatus("SUCCESS");
-			response.setStatusMessage("Job got posted successfully");
-		} else {
-			response.setStatus("FAILURE");
-			response.setStatusMessage("Job not posted successfully");
-		}
+		  service.create(rj);
+		  response.setStatus("SUCCESS");
+		  response.setStatusMessage("Job got posted successfully");
 		} catch(Exception e) {
-			response.setStatus("FAILURE");
-			response.setStatusMessage("Job not posted successfully");
-			System.out.println("error cause : " + e.getCause()  + ", error message : " + e.getMessage());
-		}
+			System.out.println("Error cause:"+e.getCause() + ", Error message:"+e.getMessage());
+		} 
 		
 		return response;
 	}
