@@ -5,6 +5,34 @@ ReferralIndia source code
 
 Preferred HSQL DB Version : 2.3.1
 
+Git commands
+-------------
+
+git clone ----------
+
+git branch -a
+
+git checkout <branch name>
+
+git status
+
+git add --all
+
+git add <file path>
+
+git commint -m "cooments"
+
+git push.
+
+git checkout --- to master
+
+git merge <branch>
+
+git commit
+
+git push.
+
+
 Steps to setup local:
 ---------------------------
 git clone https://github.com/sbrnag/RIC-Docs.git
