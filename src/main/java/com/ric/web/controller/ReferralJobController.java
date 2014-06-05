@@ -49,7 +49,7 @@ public class ReferralJobController {
 	@RequestMapping("home")
 	public ModelAndView getHomePage() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home");
+		mv.setViewName("layout/my-layout");
 		return mv;
 	}
 
