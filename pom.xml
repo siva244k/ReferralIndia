@@ -8,16 +8,19 @@
 	<name>ReferralIndia Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<spring.version>4.0.1.RELEASE</spring.version>
+		<spring.version>4.0.0.RELEASE</spring.version>
 	</properties>
 	<dependencies>
 
+
+		<!-- START Unit testing Dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- END Unit Testing dependencies -->
 
 
 		<!-- START Logging ependencies -->
@@ -47,8 +50,24 @@
 		<!-- END Logging dependencies -->
 
 
+		<!-- START Validating Dependencies -->
 
-		<!-- Spring dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.1.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+
+		<!-- END Validating Dependencies -->
+
+
+		<!-- START Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -62,12 +81,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.0.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>4.0.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -75,6 +94,9 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
+
+
+			<!-- END Spring dependencies -->
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-dbcp</artifactId>
 			<version>7.0.52</version>

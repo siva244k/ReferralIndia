@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class ReferralJob implements Serializable {
@@ -26,15 +29,18 @@ public class ReferralJob implements Serializable {
 	@Column(name = "posted_by")
 	private String postedBy;
 	
+	@NotEmpty
 	@Column(name = "open_position")
 	private String position;
 	
+	@NotEmpty
 	@Column(name = "skill")
 	private String skill;
 	
 	@Column(name = "location")
 	private String location;
 	
+	@NotNull
 	@Column(name = "exp_to")
 	private Integer expTo;
 	
