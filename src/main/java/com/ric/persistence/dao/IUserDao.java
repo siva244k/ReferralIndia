@@ -1,9 +1,9 @@
 package com.ric.persistence.dao;
 
 import com.ric.persistence.dao.common.IOperations;
-import com.ric.persistence.model.ReferrMe;
+import com.ric.persistence.model.User;
 
-public interface IReferrMeDao extends IOperations<ReferrMe> {
+public interface IUserDao extends IOperations<User> {
 	
 	//Add required specific methods
 	

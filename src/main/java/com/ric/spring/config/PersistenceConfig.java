@@ -69,6 +69,7 @@ public class PersistenceConfig {
             setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
             setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
             //setProperty("hibernate.globally_quoted_identifiers", "true");
+            setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
          }
       };
    }

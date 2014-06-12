@@ -1,12 +1,18 @@
 package com.ric.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ric.persistence.model.ReferrMe;
-import com.ric.persistence.service.IReferrMeService;
+import com.ric.persistence.model.Company;
+import com.ric.persistence.model.SearchPreference;
+import com.ric.persistence.model.User;
+import com.ric.persistence.model.UserProfile;
+import com.ric.persistence.service.IUserService;
 import com.ric.web.json.RererrMeResponse;
 import com.ric.web.model.PostRequest;
 
@@ -14,9 +20,9 @@ import com.ric.web.model.PostRequest;
 public class ReferrMeController {
 
 	@Autowired
-	private IReferrMeService service;
+	private IUserService service;
 
-	public IReferrMeService getService() {
+	public IUserService getService() {
 		return service;
 	}
 
@@ -25,16 +31,45 @@ public class ReferrMeController {
 		
 		System.out.println("request payload:" + request);
 		
+		SearchPreference sp = new SearchPreference();
+		sp.setExp("6");
+		
+		Company c1 = new Company();
+		c1.setCompanyName("Zenith");
+		
+		Company c2 = new Company();
+		c2.setCompanyName("Capco");
+		
+		Company c3 = new Company();
+		c3.setCompanyName("Nttdata");
+		
+		List<Company> companies = new ArrayList<Company>();
+		companies.add(c1);
+		companies.add(c2);
+		companies.add(c3);
+		
+		UserProfile up = new UserProfile();
+		up.setNoticePeriod("2 months");
+		up.setCctc("8 lacs");
+		up.setEctc("12 lacs");
+		up.setSearchPreference(sp);
+		up.setCompanies(companies);
+		
+		User usr = new User();
+		usr.setFirstName("nagendra prasad");
+		usr.setLastName("sbr");
+		usr.setPassword("Ric34306786");
+		usr.setPerEmail("nagendra.sbr@gmail.com");
+		usr.setProfile(up);
+		
 		RererrMeResponse response = new RererrMeResponse();
-		ReferrMe refferMe = new ReferrMe();
-		refferMe.setTotalExp("6");
-		refferMe.setCctc("8");
-		refferMe.setEctc("12");
-		refferMe.setCompany1("company1");
-		refferMe.setCompany2("company2");
-		refferMe.setCompany3("company3");
 		try {
-		  service.create(refferMe);
+		  service.create(usr);
+		  List<User> users  = service.findAll();
+		  for(User user : users) {
+			  System.out.println(user);
+		  }
+		  
 		  response.setStatus("SUCCESS");
 		  response.setStatusMessage("Your referrence sent");
 		} catch(Exception e) {

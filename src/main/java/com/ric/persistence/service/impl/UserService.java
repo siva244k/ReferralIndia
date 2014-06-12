@@ -3,24 +3,24 @@ package com.ric.persistence.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ric.persistence.dao.IReferrMeDao;
+import com.ric.persistence.dao.IUserDao;
 import com.ric.persistence.dao.common.IOperations;
-import com.ric.persistence.model.ReferrMe;
-import com.ric.persistence.service.IReferrMeService;
+import com.ric.persistence.model.User;
+import com.ric.persistence.service.IUserService;
 import com.ric.persistence.service.common.RicAbstractService;
 
 @Service
-public class ReferrMeService extends RicAbstractService<ReferrMe> implements IReferrMeService {
+public class UserService extends RicAbstractService<User> implements IUserService {
 
 	@Autowired
-    private IReferrMeDao dao;
+    private IUserDao dao;
 
-    public ReferrMeService() {
+    public UserService() {
         super();
     }
 
     @Override
-    protected IOperations<ReferrMe> getDao() {
+    protected IOperations<User> getDao() {
         return dao;
     }
     
