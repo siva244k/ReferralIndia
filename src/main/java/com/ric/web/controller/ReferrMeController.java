@@ -56,6 +56,7 @@ public class ReferrMeController {
 		up.setCompanies(companies);
 		
 		User usr = new User();
+		usr.setUserName("sbrnag");
 		usr.setFirstName("nagendra prasad");
 		usr.setLastName("sbr");
 		usr.setPassword("Ric34306786");
