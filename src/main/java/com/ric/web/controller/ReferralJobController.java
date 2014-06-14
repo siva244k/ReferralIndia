@@ -19,14 +19,6 @@ public class ReferralJobController {
 	@Autowired
 	private IReferralJobService service;
 
-	public void setService(IReferralJobService service) {
-		this.service = service;
-	}
-
-	public IReferralJobService getService() {
-		return service;
-	}
-
 	@RequestMapping(value = "post", method = RequestMethod.POST)
 	public PostResponse post(final PostRequest request) {
 

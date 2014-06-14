@@ -7,4 +7,8 @@ public interface IUserDao extends IOperations<User> {
 	
 	//Add required specific methods
 	
+    boolean authenticate(String uName, String pass) ;
+	
+	boolean searchByUserName(String uName);
+	
 }

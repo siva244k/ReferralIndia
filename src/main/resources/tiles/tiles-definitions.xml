@@ -2,10 +2,27 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="*/*" template="/WEB-INF/views/layout/my-layout.jsp">
-        <put-attribute name="header" value="/WEB-INF/views/partials/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/views/partials/menu.jsp" />
-        <put-attribute name="body" value="/WEB-INF/views/partials/body.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
-    </definition>
+	<definition name="base" template="/WEB-INF/views/layout/my-layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/partials/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/partials/menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/partials/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
+	</definition>
+
+
+
+	<definition name="home" extends="base">
+		<put-attribute name="body"  value="/WEB-INF/views/partials/homepage.jsp" />
+	</definition>
+	
+	<definition name="login" extends="base">
+	<put-attribute name="body"  value="/WEB-INF/views/partials/login.jsp" />
+	</definition>
+	
+	
+		<definition name="signup" extends="base">
+	<put-attribute name="body"  value="/WEB-INF/views/partials/signup.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>

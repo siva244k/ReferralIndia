@@ -26,7 +26,7 @@ public class ReferrMeController {
 		return service;
 	}
 
-	@RequestMapping(value = "referrME", method = RequestMethod.GET)
+	@RequestMapping(value = "referME", method = RequestMethod.GET)
 	public RererrMeResponse post(final PostRequest request) {
 		
 		System.out.println("request payload:" + request);

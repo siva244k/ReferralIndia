@@ -23,6 +23,18 @@ public class UserService extends RicAbstractService<User> implements IUserServic
     protected IOperations<User> getDao() {
         return dao;
     }
+
+	@Override
+	public boolean authenticate(String uName, String pass) {
+		
+		return dao.authenticate(uName, pass);
+		
+	}
+
+	@Override
+	public boolean searchByUserName(String uName) {
+		return dao.searchByUserName(uName);
+	}
     
     // API
 }

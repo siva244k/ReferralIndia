@@ -6,5 +6,10 @@ import com.ric.persistence.model.User;
 public interface IUserService extends IOperations<User> {
 	
 	//Add specific methods 
+	
+	boolean authenticate(String uName, String pass) ;
+	
+	boolean searchByUserName(String uName);
+	
 
 }
