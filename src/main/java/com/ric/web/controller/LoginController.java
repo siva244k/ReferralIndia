@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ric.persistence.model.User;
@@ -62,6 +62,25 @@ public class LoginController {
 		model.put("userBO", userBO);
 		mv.setViewName("signup");
 		return mv;
+
+	}
+
+	@RequestMapping(value = "useridcheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String userCheck(UserBO bo) {
+		String status = "notavailable";
+
+		try {
+			if (!service.searchByUserName(bo.getUserName())) {
+				log.info("checking username is available or not ");
+				status = "available";
+			}
+		} catch (Exception e) {
+			log.error("Error cause:{} Error message:{}", e.getCause(),
+					e.getMessage());
+		}
+
+		return status;
 
 	}
 

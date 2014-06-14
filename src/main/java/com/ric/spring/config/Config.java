@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 @ComponentScan("com.ric")
 // Enables Spring's annotations
 @EnableWebMvc
-public class Config extends WebMvcConfigurerAdapter{
+public class Config extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public UrlBasedViewResolver setupViewResolver() {
@@ -35,20 +35,11 @@ public class Config extends WebMvcConfigurerAdapter{
 
 		return tilesConfigurer;
 	}
-	
-	@Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-           registry.addResourceHandler("/resources/**").addResourceLocations(
-                        "/resources/");
-    }
 
-	@Bean
-	public ResourceBundleMessageSource messageSource()
-	{
-		ResourceBundleMessageSource bundleMessageSource=new ResourceBundleMessageSource();
-		bundleMessageSource.setBasename("classpath:message");
-		return bundleMessageSource;
-		
-		
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations(
+				"/resources/");
 	}
+
 }
