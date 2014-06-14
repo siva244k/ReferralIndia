@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>PostData</title>
 <script
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        src="resources/js/jquery-2.1.1.min.js"></script>
 
 <script>
         function start() {
