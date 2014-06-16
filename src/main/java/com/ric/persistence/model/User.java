@@ -1,6 +1,8 @@
 package com.ric.persistence.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -47,20 +52,16 @@ public class User implements Serializable {
 	@PrimaryKeyJoinColumn
 	private UserProfile profile;
 	
+	 @ManyToMany(cascade = {CascadeType.ALL})
+	 @JoinTable(name="user_referralJobs", 
+	                joinColumns={@JoinColumn(name="user_id")}, 
+	                inverseJoinColumns={@JoinColumn(name="referraljob_id")})
+    private Set<ReferralJob> referralJobs = new HashSet<ReferralJob>();
+	
 	public User()  {
 		
 	}
     
-	public User(String firstName, String lastName, String perEmail,
-			String ogrEmail, String password) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.perEmail = perEmail;
-		this.ogrEmail = ogrEmail;
-		this.password = password;
-	}
-	
 	/**
 	 * @return the id
 	 */
@@ -174,6 +175,20 @@ public class User implements Serializable {
 		this.profile = profile;
 	}
 	
+	/**
+	 * @return the referralJobs
+	 */
+	public Set<ReferralJob> getReferralJobs() {
+		return referralJobs;
+	}
+
+	/**
+	 * @param referralJobs the referralJobs to set
+	 */
+	public void setReferralJobs(Set<ReferralJob> referralJobs) {
+		this.referralJobs = referralJobs;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

@@ -1,7 +1,9 @@
 package com.ric.web.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ric.persistence.model.Company;
+import com.ric.persistence.model.ReferralJob;
 import com.ric.persistence.model.SearchPreference;
 import com.ric.persistence.model.User;
 import com.ric.persistence.model.UserProfile;
@@ -26,7 +29,7 @@ public class ReferrMeController {
 		return service;
 	}
 
-	@RequestMapping(value = "referME", method = RequestMethod.GET)
+	@RequestMapping(value = "referrME", method = RequestMethod.GET)
 	public RererrMeResponse post(final PostRequest request) {
 		
 		System.out.println("request payload:" + request);
@@ -55,6 +58,30 @@ public class ReferrMeController {
 		up.setSearchPreference(sp);
 		up.setCompanies(companies);
 		
+		ReferralJob rj1 = new ReferralJob();
+		rj1.setSkill("java");
+		rj1.setPosition("lead");
+		rj1.setExpTo(3);
+		
+		ReferralJob rj2 = new ReferralJob();
+		rj2.setSkill(".net");
+		rj2.setPosition("sse");
+		rj2.setExpTo(2);
+		
+		ReferralJob rj3 = new ReferralJob();
+		rj3.setSkill("QA");
+		rj3.setPosition("se");
+		rj3.setExpTo(1);
+		
+		Set<ReferralJob> jobs = new HashSet<ReferralJob>();
+		jobs.add(rj1);
+		jobs.add(rj2);
+		jobs.add(rj3);
+		
+		int id = 1;
+		User usr1 = service.findOne(id);
+		
+		
 		User usr = new User();
 		usr.setUserName("sbrnag");
 		usr.setFirstName("nagendra prasad");
@@ -62,6 +89,7 @@ public class ReferrMeController {
 		usr.setPassword("Ric34306786");
 		usr.setPerEmail("nagendra.sbr@gmail.com");
 		usr.setProfile(up);
+		usr.setReferralJobs(usr1.getReferralJobs());
 		
 		RererrMeResponse response = new RererrMeResponse();
 		try {

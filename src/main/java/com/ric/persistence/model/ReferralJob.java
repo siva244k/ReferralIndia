@@ -2,64 +2,66 @@ package com.ric.persistence.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class ReferralJob implements Serializable {
-	
+
 	/**
 	 * serialVersionUID
 	 */
 	private static final long serialVersionUID = -6561921759548148534L;
-	
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Integer id;
+
 	@Column(name = "posted_by")
 	private String postedBy;
-	
-	@NotEmpty
+
 	@Column(name = "open_position")
 	private String position;
-	
-	@NotEmpty
+
 	@Column(name = "skill")
 	private String skill;
-	
+
 	@Column(name = "location")
 	private String location;
-	
-	@NotNull
+
 	@Column(name = "exp_to")
 	private Integer expTo;
-	
+
 	@Column(name = "exp_from")
 	private Integer expFrom;
-	
+
 	@Column(name = "posted_date")
 	private Date postedDate;
-	
+
 	@Column(name = "expire_date")
 	private Date expireDate;
-	
+
+	@Column(name = "company")
+	private String company;
+
+	@ManyToMany(mappedBy = "referralJobs")
+	private Set<User> referrers = new HashSet<User>();
+
 	public ReferralJob() {
-		
+
 	}
-	
-	public ReferralJob(String postedBy, String position,
-			String skill, String location, Integer expTo, Integer expFrom,
-			Date postedDate, Date expireDate) {
+
+	public ReferralJob(String postedBy, String position, String skill,
+			String location, Integer expTo, Integer expFrom, Date postedDate,
+			Date expireDate) {
 		super();
 		this.postedBy = postedBy;
 		this.position = position;
@@ -142,39 +144,83 @@ public class ReferralJob implements Serializable {
 	public void setExpireDate(final Date expireDate) {
 		this.expireDate = expireDate;
 	}
-    	
-	// 
+
+	/**
+	 * @return the company
+	 */
+	public String getCompany() {
+		return company;
+	}
+
+	/**
+	 * @param company
+	 *            the company to set
+	 */
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	/**
+	 * @return the referrers
+	 */
+	public Set<User> getReferrers() {
+		return referrers;
+	}
+
+	/**
+	 * @param referrers
+	 *            the referrers to set
+	 */
+	public void setReferrers(Set<User> referrers) {
+		this.referrers = referrers;
+	}
 
 	@Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
+	public boolean equals(Object object) {
+		boolean result = false;
+		if (object == null || object.getClass() != getClass()) {
+			result = false;
+		} else {
+			ReferralJob referralJob = (ReferralJob) object;
+			if (this.skill == referralJob.getSkill()
+					&& this.location == referralJob.getLocation()
+					&& this.company == referralJob.getCompany()
+					&& this.expTo.equals(referralJob.getExpTo())
+					&& this.expFrom.equals(referralJob.getExpFrom())) {
+				result = true;
+			}
+		}
+		return result;
+	}
 
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final ReferralJob other = (ReferralJob) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
+	// just omitted null checks
+	@Override
+	public int hashCode() {
+		int hash = 3;
+		if(this.location != null) {
+			hash = 7 * hash + this.company.hashCode();
+		}
+		if(this.location != null) {
+			hash = 7 * hash + this.skill.hashCode();
+		}
+		if(this.location != null) {
+			hash = 7 * hash + this.expTo.hashCode();
+		}
+		if(this.location != null) {
+			hash = 7 * hash + this.expFrom.hashCode();
+		}
+		if(this.location != null) {
+			hash = 7 * hash + this.location.hashCode();
+		}
+		return hash;
+	}
 
-    @Override
-    public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("ReferralJob [id=").append(id).append(", skill=").append(skill).append("]");
-        return builder.toString();
-    }
+	@Override
+	public String toString() {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("ReferralJob [id=").append(id).append(", skill=")
+				.append(skill).append("]");
+		return builder.toString();
+	}
 
 }
