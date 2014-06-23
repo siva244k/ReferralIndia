@@ -8,5 +8,10 @@
 </head>
 <body>
 <h1>HomePage</h1>
+
+<center>
+<h1>Home Page</h1>
+<h3><a href="post">POST A JOB</a></h3>
+</center>
 </body>
 </html>

@@ -36,7 +36,7 @@
 
 				<tr>
 					<td>USERNAME:</td>
-					<td><sf:input path="userName" onmouseout="uniqueName()" /></td>
+					<td><sf:input path="userName" onkeyup="uniqueName()" /></td>
 					<td><div id="uservailability">
 					</div><sf:errors path="userName" /></td>
 				</tr>

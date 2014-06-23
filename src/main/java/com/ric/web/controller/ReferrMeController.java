@@ -17,7 +17,7 @@ import com.ric.persistence.model.User;
 import com.ric.persistence.model.UserProfile;
 import com.ric.persistence.service.IUserService;
 import com.ric.web.json.RererrMeResponse;
-import com.ric.web.model.PostRequest;
+import com.ric.web.model.ReferralJobBO;
 
 @RestController
 public class ReferrMeController {
@@ -30,7 +30,7 @@ public class ReferrMeController {
 	}
 
 	@RequestMapping(value = "referrME", method = RequestMethod.GET)
-	public RererrMeResponse post(final PostRequest request) {
+	public RererrMeResponse post(final ReferralJobBO request) {
 		
 		System.out.println("request payload:" + request);
 		

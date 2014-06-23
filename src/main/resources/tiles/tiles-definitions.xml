@@ -24,5 +24,10 @@
 	<put-attribute name="body"  value="/WEB-INF/views/partials/signup.jsp" />
 	</definition>
 	
+	<definition name="post" extends="base">
+	<put-attribute name="body"  value="/WEB-INF/views/partials/postjob.jsp" />
+	</definition>
+	
+	
 	
 </tiles-definitions>
