@@ -35,6 +35,12 @@ public class UserService extends RicAbstractService<User> implements IUserServic
 	public boolean searchByUserName(String uName) {
 		return dao.searchByUserName(uName);
 	}
+
+	@Override
+	public User findByName(String uName) {
+		
+		return dao.findByName(uName);
+	}
     
     // API
 }

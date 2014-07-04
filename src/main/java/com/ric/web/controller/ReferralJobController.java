@@ -23,7 +23,7 @@ public class ReferralJobController {
 	@Autowired
 	private IReferralJobService service;
 
-	@RequestMapping(value = "post", method = RequestMethod.POST)
+	@RequestMapping(value = "postajob", method = RequestMethod.POST)
 	public PostResponse post(final ReferralJobBO request) {
 
 		log.info("request payload: skill={},position={},expto={}",request.getExpire_date());

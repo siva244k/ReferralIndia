@@ -11,4 +11,6 @@ public interface IUserDao extends IOperations<User> {
 	
 	boolean searchByUserName(String uName);
 	
+	User findByName(String uName);
+	
 }

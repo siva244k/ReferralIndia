@@ -2,7 +2,24 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="base" template="/WEB-INF/views/layout/my-layout.jsp">
+	<definition name="start" template="/WEB-INF/views/layout/front-layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/partials/loginheader.jsp" />
+
+		<put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
+	</definition>
+	
+	<definition name="logout" template="/WEB-INF/views/layout/front-layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/partials/logout.jsp" />
+
+		<put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
+	</definition>
+	
+
+
+
+	<definition name="base" template="/WEB-INF/views/layout/home-layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/partials/header.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/views/partials/menu.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/partials/body.jsp" />
@@ -12,22 +29,24 @@
 
 
 	<definition name="home" extends="base">
-		<put-attribute name="body"  value="/WEB-INF/views/partials/homepage.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/partials/homepage.jsp" />
 	</definition>
-	
+
 	<definition name="login" extends="base">
-	<put-attribute name="body"  value="/WEB-INF/views/partials/login.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/partials/login.jsp" />
 	</definition>
-	
-	
-		<definition name="signup" extends="base">
-	<put-attribute name="body"  value="/WEB-INF/views/partials/signup.jsp" />
+
+
+	<definition name="signup" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/partials/signup.jsp" />
 	</definition>
-	
+
 	<definition name="post" extends="base">
-	<put-attribute name="body"  value="/WEB-INF/views/partials/postjob.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/partials/postjob.jsp" />
 	</definition>
-	
-	
-	
+
+
+
 </tiles-definitions>

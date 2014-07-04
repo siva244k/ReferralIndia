@@ -28,11 +28,31 @@ public class LoginController {
 	static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ModelAndView getHomePage() {
+
+		ModelAndView mv = new ModelAndView();
+		log.info("Home Page is going to lauch ");
+		mv.setViewName("home");
+		return mv;
+
+	}
+
+	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView getLoginPage() {
 
 		ModelAndView mv = new ModelAndView();
 		log.info("Login Page is going to lauch ");
-		mv.setViewName("login");
+		mv.setViewName("start");
+		return mv;
+
+	}
+
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public ModelAndView getLogoutPage() {
+
+		ModelAndView mv = new ModelAndView();
+		log.info("Logout Page is going to lauch ");
+		mv.setViewName("logout");
 		return mv;
 
 	}

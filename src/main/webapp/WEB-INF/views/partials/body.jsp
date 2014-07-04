@@ -13,7 +13,7 @@
         function start() {
                 $.ajax({
                         type : "POST",
-                        url : "post",
+                        url : "postajob",
                         data : $("#postdata").serialize(),
                         success : function(result) {
                                 $("#div1").text(result.status+"--"+result.statusMessage)

@@ -7,9 +7,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 @SuppressWarnings("unchecked")
 public abstract class RicAbstractDAO<T extends Serializable> implements
-		IOperations<T> {
+		IOperations<T>{
 
 	private Class<T> clazz;
 
