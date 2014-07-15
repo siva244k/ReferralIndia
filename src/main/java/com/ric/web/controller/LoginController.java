@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ric.persistence.model.User;
 import com.ric.persistence.service.IUserService;
+import com.ric.web.model.SecurityUser;
 import com.ric.web.model.UserBO;
 
 @Controller
@@ -27,10 +30,15 @@ public class LoginController {
 
 	static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginSucces", method = RequestMethod.GET)
 	public ModelAndView getHomePage() {
 
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		SecurityUser user = (SecurityUser) auth.getPrincipal();
+	
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", user);
 		log.info("Home Page is going to lauch ");
 		mv.setViewName("home");
 		return mv;

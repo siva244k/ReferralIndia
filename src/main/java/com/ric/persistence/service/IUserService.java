@@ -1,5 +1,7 @@
 package com.ric.persistence.service;
 
+
+
 import com.ric.persistence.dao.common.IOperations;
 import com.ric.persistence.model.User;
 
@@ -11,6 +13,7 @@ public interface IUserService extends IOperations<User> {
 
 	boolean searchByUserName(String uName);
 
+	
 	User findByName(String uName);
 
 }

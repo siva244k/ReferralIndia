@@ -80,7 +80,7 @@
 	<center>
 		<h1>Referral Job</h1>
 
-		<sf:form method="POST" action="post" commandName="rfjob">
+		<sf:form method="POST" action="postajob" commandName="rfjob">
 			<table>
 
 
@@ -174,13 +174,14 @@
 					<td><sf:errors path="company" /></td>
 				</tr>
 
-					<tr>
+				<tr>
 					<td></td>
-					<td><input type="submit" value="Post"></td>
+					<td><input type="submit" value="POSTJOB"></td>
 					<td></td>
 				</tr>
 
 			</table>
+
 		</sf:form>
 
 		<div></div>

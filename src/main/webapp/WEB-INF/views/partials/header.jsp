@@ -4,11 +4,10 @@
 <html>
 <head>
 <style>
-#userprinciple{
-
-position: absolute;
-top:20px;
-right: 50px;
+#userprinciple {
+	position: absolute;
+	top: 20px;
+	right: 50px;
 }
 </style>
 </head>
@@ -16,18 +15,17 @@ right: 50px;
 	<center>
 		<h1>Referral India</h1>
 	</center>
-	
+
 	<div id="userprinciple">
-	Hello
-	<b><c:out value="${pageContext.request.remoteUser}" /></b> you are  logged in !
-	<form action="logout" method="post">
+		Hello <b><c:out value="${pageContext.request.remoteUser}" /></b> you
+		are logged in !
+		<form action="logout" method="POST">
 
-		<input type="submit" value="Logout" /> 
-		
-		<input type="hidden"
-			name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-	</form>
+
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" /> <input type="submit" value="Logout" />
+		</form>
 	</div>
 </body>
 </html>

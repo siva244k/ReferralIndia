@@ -2,6 +2,9 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
+
+<!-- DEFAULT PAGE  -->
+
 	<definition name="start" template="/WEB-INF/views/layout/front-layout.jsp">
 		<put-attribute name="header"
 			value="/WEB-INF/views/partials/loginheader.jsp" />
@@ -9,6 +12,7 @@
 		<put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
 	</definition>
 	
+	<!--  LOGOUT  -->
 	<definition name="logout" template="/WEB-INF/views/layout/front-layout.jsp">
 		<put-attribute name="header"
 			value="/WEB-INF/views/partials/logout.jsp" />
