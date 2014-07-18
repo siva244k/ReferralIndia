@@ -6,17 +6,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+body {
+	background-color: lightgray;
+}
+
+</style>
 
 </head>
 <body>
-	<table border="1" cellpadding="2" cellspacing="2" align="center">
+	<table border="1">
 		<tr>
 			<td height="30" colspan="2"><tiles:insertAttribute name="header" />
 			</td>
 		</tr>
 		<tr>
-			<td height="500"><tiles:insertAttribute name="menu" /></td>
-			<td width="100%"><tiles:insertAttribute name="body" /></td>
+			<td width="200"  height="550"><tiles:insertAttribute name="menu" /></td>
+			<td width="1300"><tiles:insertAttribute name="body" /></td>
+			
 		</tr>
 		<tr>
 			<td height="30" colspan="2"><tiles:insertAttribute name="footer" />

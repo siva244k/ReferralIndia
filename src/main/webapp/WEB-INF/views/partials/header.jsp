@@ -4,27 +4,36 @@
 <html>
 <head>
 <style>
-#userprinciple {
+#logout {
 	position: absolute;
 	top: 20px;
-	right: 50px;
+	right: 20px;
+}
+
+#userprinciple
+{
+position: absolute;
+	top: 20px;
+	left: 20px;
 }
 </style>
 </head>
 <body>
-	<center>
-		<h1>Referral India</h1>
-	</center>
+
 
 	<div id="userprinciple">
-		Hello <b><c:out value="${pageContext.request.remoteUser}" /></b> you
-		are logged in !
+		Hello <b><c:out value="${pageContext.request.remoteUser}" /></b> !
+	
+	</div>
+	
+	<div id="logout">
+	
 		<form action="logout" method="POST">
 
 
 
 			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" /> <input type="submit" value="Logout" />
+				value="${_csrf.token}" /> <input type="submit" value="Logout" name="Logout" />
 		</form>
 	</div>
 </body>

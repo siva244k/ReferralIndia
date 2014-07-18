@@ -8,31 +8,35 @@
 <title>ReferralIndia</title>
 <style>
 #login {
-	position: top:40px;
+	position: absolute;
+	right:10px;
+}
+p{
+position: absolute;
+color:red;
+	top:15px;
+	right:3px;
 }
 </style>
 </head>
 <body>
 
-	<c:url value="/login" var="loginUrl" />
-	<form action="${loginUrl}" method="post">
-		<c:if test="${param.error != null}">
-			<p>Invalid username and password.</p>
-		</c:if>
-		<c:if test="${param.logout != null}">
-			<p>You have been logged out.</p>
-		</c:if>
-		<p>
+	<div id="login">
+		<c:url value="/login" var="loginUrl" />
+		<form action="${loginUrl}" method="post">
+			<c:if test="${param.error != null}">
+				<p>Invalid username and password.</p>
+			</c:if>
+			<c:if test="${param.logout != null}">
+				<p>You have been logged out.</p>
+			</c:if>
+
 			<label for="username">Username</label> <input type="text"
-				id="username" name="username" />
-		</p>
-		<p>
-			<label for="password">Password</label> <input type="password"
-				id="password" name="password" />
-		</p>
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
-		<button type="submit" class="btn">Log in</button>
-	</form>
+				id="username" name="username" /> <label for="password">Password</label>
+			<input type="password" id="password" name="password" /> <input
+				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<button type="submit" class="btn">Log in</button>
+		</form>
+	</div>
 </body>
 </html>

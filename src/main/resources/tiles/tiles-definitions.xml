@@ -3,23 +3,32 @@
 
 <tiles-definitions>
 
-<!-- DEFAULT PAGE  -->
+	<!-- DEFAULT PAGE -->
 
 	<definition name="start" template="/WEB-INF/views/layout/front-layout.jsp">
 		<put-attribute name="header"
 			value="/WEB-INF/views/partials/loginheader.jsp" />
-
+		<put-attribute name="body"
+			value="/WEB-INF/views/partials/signuppage.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
 	</definition>
-	
-	<!--  LOGOUT  -->
+
+
+
+
+
+
+
+
+
+
+	<!-- LOGOUT -->
 	<definition name="logout" template="/WEB-INF/views/layout/front-layout.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/views/partials/logout.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/partials/logout.jsp" />
 
 		<put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
 	</definition>
-	
+
 
 
 
@@ -35,6 +44,29 @@
 	<definition name="home" extends="base">
 		<put-attribute name="body"
 			value="/WEB-INF/views/partials/homepage.jsp" />
+	</definition>
+
+<!-- Registration Succes -->
+
+
+
+<definition name="registrationsucces" template="/WEB-INF/views/layout/front-layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/partials/loginheader.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/partials/registrationsucces.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/partials/footer.jsp" />
+	</definition>
+	
+	
+	
+	
+
+<!-- Display JOBS -->
+
+<definition name="displayjobs" extends="base">
+		<put-attribute name="body"
+			value="/WEB-INF/views/partials/displayjobs.jsp" />
 	</definition>
 
 	<definition name="login" extends="base">

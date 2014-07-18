@@ -1,11 +1,14 @@
 package com.ric.web.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +29,8 @@ public class ReferralJobController {
 	@RequestMapping(value = "postajob", method = RequestMethod.POST)
 	public PostResponse post(final ReferralJobBO request) {
 
-		log.info("request payload: skill={},position={},expto={}",request.getExpire_date());
+		log.info("request payload: skill={},position={},expto={}",
+				request.getExpire_date());
 
 		PostResponse response = new PostResponse();
 		ReferralJob rj = new ReferralJob();
@@ -37,12 +41,12 @@ public class ReferralJobController {
 		rj.setPosition(request.getOpen_position());
 		rj.setSkill(request.getSkill());
 		rj.setCompany(request.getCompany());
-		
+
 		rj.setPostedDate(new Date());
-		
+
 		try {
 			service.create(rj);
-			response.setStatus("SUCCESS");
+			response.setStatus("succesfully posted");
 			response.setStatusMessage("Job got posted successfully");
 		} catch (Exception e) {
 			log.error("Error cause:{} Error message:{}", e.getCause(),
@@ -56,10 +60,30 @@ public class ReferralJobController {
 	public ModelAndView getPostpage(Map<String, Object> model) {
 		ModelAndView mv = new ModelAndView();
 		log.info("post page is going to launch ");
-		ReferralJobBO bo=new ReferralJobBO();
+		ReferralJobBO bo = new ReferralJobBO();
 		model.put("rfjob", bo);
 		mv.setViewName("post");
 		return mv;
+	}
+
+	@RequestMapping(value = "displayreferraljobs", method = RequestMethod.GET)
+	public List<ReferralJobBO> getReferralJobs(Map<String, Object> model) {
+
+		log.info("referral jobs  going to display");
+
+		List<ReferralJob> rfjobs = service.findAll();
+		List<ReferralJobBO> rfjobBo = new ArrayList<ReferralJobBO>();
+		for (ReferralJob k : rfjobs) {
+			ReferralJobBO bo = new ReferralJobBO();
+			bo.setCompany(k.getCompany());
+			bo.setSkill(k.getSkill());
+			bo.setOpen_position(k.getPosition());
+			rfjobBo.add(bo);
+
+		}
+
+		return rfjobBo;
+
 	}
 
 }
