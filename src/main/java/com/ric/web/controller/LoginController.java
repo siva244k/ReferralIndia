@@ -1,5 +1,7 @@
 package com.ric.web.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ric.persistence.model.ReferralJob;
 import com.ric.persistence.model.User;
 import com.ric.persistence.service.IUserService;
+import com.ric.web.json.RegistrationResponse;
 import com.ric.web.model.ReferralJobBO;
 import com.ric.web.model.SecurityUser;
 import com.ric.web.model.UserBO;
@@ -126,14 +131,16 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
-	public String register(@RequestParam("username") String username,
+	@ResponseBody
+	public RegistrationResponse register(
+			@RequestParam("username") String username,
 			@RequestParam("password") String password,
 			@RequestParam("firstName") String firstname,
 			@RequestParam("lastName") String lastname,
 			@RequestParam("peremail") String permail,
-			@RequestParam("ogrEmail") String omail) {
+			@RequestParam("ogrEmail") String omail,Map<String, Object> model) {
 
-		ModelAndView mv = new ModelAndView();
+		RegistrationResponse response = new RegistrationResponse();
 
 		User user = new User();
 		user.setUserName(username);
@@ -143,20 +150,21 @@ public class LoginController {
 		user.setPerEmail(permail);
 		user.setOgrEmail(omail);
 
+
 		if (username == "" || password == "" || firstname == ""
 				|| lastname == "" || permail == "" || omail == "") {
 
-			mv.setViewName("signup");
 		} else {
 
 			try {
 				if (!service.searchByUserName(user.getUserName())) {
 					log.info("registering the user ");
 					service.create(user);
-
+					response.setStatus(username+"    registered succesfull try to login....! ");
 
 				} else {
-					mv.setViewName("signup");
+
+					response.setStatus("not registered");
 				}
 
 			} catch (Exception e) {
@@ -165,7 +173,7 @@ public class LoginController {
 			}
 		}
 
-		return username;
+		return response;
 
 	}
 

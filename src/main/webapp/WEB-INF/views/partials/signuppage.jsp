@@ -7,13 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Signup</title>
 <style type="text/css">
-
-#uservailability
-{
-
-color: red;
+#uservailability {
+	color: red;
 }
 
+#registered {
+	color: red;
+}
+#signup{
+border-style: ridge;
+}
 </style>
 <script src="resources/js/jquery-2.1.1.min.js"></script>
 
@@ -24,8 +27,7 @@ color: red;
 			url : "useridcheck",
 			data : $("#signupdata").serialize(),
 			success : function(result) {
-				
-				
+
 				$("#uservailability").text(result)
 			},
 			error : function(e) {
@@ -46,12 +48,11 @@ color: red;
 			url : "signup",
 			data : $("#signupdata").serialize(),
 			success : function(result) {
-				
-				
-				$("#registered").text(result)
+
+				$("#registered").text(result.status)
 			},
 			error : function(e) {
-				$("#registered").text("not registered")
+				$("#registered").text("not submitted ")
 			}
 		});
 
@@ -60,62 +61,65 @@ color: red;
 </head>
 <body>
 	<center>
-		<h1 >Signup</h1>
 
-		<form method="POST" action="signup" id="signupdata">
-			<table>
+		<div id="signup">
+			<h1>Signup</h1>
 
-				<tr>
-					<td>USERNAME:</td>
-					<td><input type="text" name="username" onkeyup="uniqueName()" /></td>
-					<td><div id="uservailability" >
-					
-					</div></td>
-				</tr>
+			<form method="POST" id="signupdata">
+				<table>
 
-
-				<tr>
-					<td>PASSWORD:</td>
-					<td><input type="password" name="password" /></td>
-					<td></td>
-				</tr>
+					<tr>
+						<td>USERNAME:</td>
+						<td><input type="text" name="username" onkeyup="uniqueName()" /></td>
+						<td><div id="uservailability"></div></td>
+					</tr>
 
 
-				<tr>
-					<td>FIRSTNAME:</td>
-					<td><input type="text" name="firstName" /></td>
-					<td></td>
-				</tr>
-
-				<tr>
-					<td>LASTNAME:</td>
-					<td><input type="text" name="lastName" /></td>
-					<td></td>
-				</tr>
-
-				<tr>
-					<td>PEREMAIL:</td>
-					<td><input type="text" name="peremail" /></td>
-					<td></td>
-				</tr>
-
-				<tr>
-					<td>OMAIL:</td>
-					<td><input type="text" name="ogrEmail" /></td>
-					<td></td>
-				</tr>
+					<tr>
+						<td>PASSWORD:</td>
+						<td><input type="password" name="password" /></td>
+						<td></td>
+					</tr>
 
 
-				<tr>
-					<td></td>
-					<td><input type="button" value="Signup" onclick="registerAjax()"></td>
-					<td></td>
-				</tr>
-			</table>
-		</form>
+					<tr>
+						<td>FIRSTNAME:</td>
+						<td><input type="text" name="firstName" /></td>
+						<td></td>
+					</tr>
 
-		<div id="registered"></div>
+					<tr>
+						<td>LASTNAME:</td>
+						<td><input type="text" name="lastName" /></td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<td>PEREMAIL:</td>
+						<td><input type="text" name="peremail" /></td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<td>OMAIL:</td>
+						<td><input type="text" name="ogrEmail" /></td>
+						<td></td>
+					</tr>
+
+
+					<tr>
+						<td></td>
+						<td><input type="Button" value="Signup"
+							onClick="registerAjax()"></td>
+						<td></td>
+					</tr>
+				</table>
+			</form>
+
+		</div>
 	</center>
+
+	<div id="registered"></div>
 
 </body>
 </html>

@@ -10,9 +10,8 @@
 	right: 20px;
 }
 
-#userprinciple
-{
-position: absolute;
+#userprinciple {
+	position: absolute;
 	top: 20px;
 	left: 20px;
 }
@@ -23,17 +22,18 @@ position: absolute;
 
 	<div id="userprinciple">
 		Hello <b><c:out value="${pageContext.request.remoteUser}" /></b> !
-	
+
 	</div>
-	
+
 	<div id="logout">
-	
+
 		<form action="logout" method="POST">
 
 
 
 			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" /> <input type="submit" value="Logout" name="Logout" />
+				value="${_csrf.token}" /> <input type="submit" value="Logout"
+				name="Logout" />
 		</form>
 	</div>
 </body>

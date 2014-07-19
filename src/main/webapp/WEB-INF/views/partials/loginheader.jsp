@@ -10,12 +10,16 @@
 #login {
 	position: absolute;
 	right:10px;
+	border-style: ridge;
+	
+	
 }
 p{
 position: absolute;
 color:red;
 	top:15px;
 	right:3px;
+	
 }
 </style>
 </head>
